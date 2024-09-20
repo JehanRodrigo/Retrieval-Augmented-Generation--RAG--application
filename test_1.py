@@ -1,9 +1,22 @@
 # Define the corpus of documents
-corpus_of_documents = [
+# corpus_of_documents = [
     
-    "I like reading books on weekends.",
-    "I enjoy swimming and playing tennis.",
-    "I enjoy hiking in the mountains.",
+#     "I like reading",
+#     "I enjoy swimming",
+#     "I enjoy hiking",
+# ]
+
+corpus_of_documents = [
+    "Take a leisurely walk in the park and enjoy the fresh air.",
+    "Visit a local museum and discover something new.",
+    "Attend a live music concert and feel the rhythm.",
+    "Go for a hike and admire the natural scenery.",
+    "Have a picnic with friends and share some laughs.",
+    "Explore a new cuisine by dining at an ethnic restaurant.",
+    "Take a yoga class and stretch your body and mind.",
+    "Join a local sports league and enjoy some friendly competition.",
+    "Attend a workshop or lecture on a topic you're interested in.",
+    "Visit an amusement park and ride the roller coasters."
 ]
 
 def jaccard_similarity(query, document): # Jaccard similarity is a measure of how similar two sets (in this case, words in a query and a document) are based on the ratio of common words to the total unique words.
