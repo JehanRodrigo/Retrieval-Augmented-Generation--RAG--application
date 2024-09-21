@@ -13,3 +13,5 @@
   import json
   ```
 * use ``` pip install requests ```
+* to pull the model ``` ollama pull lama2 ```
+* to run the model ``` ollama run lama2 ```
