@@ -9,7 +9,7 @@
 ## Ollama setup
 * Ref 1: https://dev.to/jayantaadhikary/installing-llms-locally-using-ollama-beginners-guide-4gbi
 * Download ollama [here](https://ollama.com/download) and install. {you can browse other ollama models in here https://ollama.com/library}
-* * now when you run ollama will run on your local machine in [http://localhost:11434](http://localhost:11434)
+* now when you run ollama will run on your local machine in [http://localhost:11434](http://localhost:11434)
 * to pull the model run  ``` ollama pull llama2 ``` in your powershell
 
 ### checking ollama (llama2)
