@@ -1,7 +1,7 @@
 import requests
 import json
 
-user_input = "I like to hike"
+user_input = "I don't like to hike"
 
 prompt = """
 You are a bot that makes recommendations for activities. You answer in very short sentences and do not include extra information.
@@ -9,6 +9,7 @@ This is the recommended activity: {relevant_document}
 The user input is: {user_input}
 Compile a recommendation to the user based on the recommended activity and the user input.
 """
+#This is the prompt sent to the AI model. It provides a context for how the bot should behave (in this case, making short recommendations).
 
 corpus_of_documents = [
     "Take a leisurely walk in the park and enjoy the fresh air.",
@@ -22,11 +23,13 @@ corpus_of_documents = [
     "Attend a workshop or lecture on a topic you're interested in.",
     "Visit an amusement park and ride the roller coasters."
 ]
-# relevant_document = return_response(user_input, corpus_of_documents)
 
 full_response = []
+#This initializes an empty list to store the bot's response.
 
-url = 'ollama pull llama2/api/generate'
+url = 'http://localhost:11434/api/generate'
+#The API endpoint where the bot will send a request. In this case, it’s a local server (localhost) running on port 11434.
+
 data = {
     "model": "llama2",
     "prompt": prompt.format(user_input=user_input, relevant_document=corpus_of_documents)
@@ -34,16 +37,13 @@ data = {
 headers = {'Content-Type': 'application/json'}
 response = requests.post(url, data=json.dumps(data), headers=headers, stream=True)
 try:
+  
     for line in response.iter_lines():
+      
         if line:
             decoded_line = json.loads(line.decode('utf-8'))
             
-            # Check if 'response' key exists
-            response_text = decoded_line.get('response')
-            if response_text:  # Append only if the key is present
-                full_response.append(response_text)
-            else:
-                print("Warning: 'response' key not found in", decoded_line)
+            full_response.append(decoded_line['response'])
 finally:
     response.close()
 print(''.join(full_response))
