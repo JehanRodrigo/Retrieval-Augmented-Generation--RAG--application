@@ -16,10 +16,25 @@
 * to run the model use ``` ollama run llama2 ``` in powershell and chat with it.. You can exit the prompt session using ```/bye```
 
 ## Running "test_2_Usn_LLM.py" File
-* Must import
-  ```
-  import requests
-  import json
-  ```
-* use ``` pip install requests ``` to install requests.
-* Then Learn and try editing..
+* To import requests use ``` pip install requests ``` to install requests.
+* Then you can run "test_2_Usn_LLM.py" File
+* Learn and try editing..
+
+# for more
+## Here are ten potential areas where we could improve the current setup:
+* The number of documents 👉 more documents might mean more recommendations.
+* The depth/size of documents 👉 higher quality content and longer documents with more information might be better.
+* The number of documents we give to the LLM 👉 Right now, we're only giving the LLM one document. We could feed in several as 'context' and allow the model to provide a more personalized recommendation based on the user input.
+* The parts of documents that we give to the LLM 👉 If we have bigger or more thorough documents, we might just want to add in parts of those documents, parts of various documents, or some variation there of. In the lexicon, this is called chunking.
+* Our document storage tool 👉 We might store our documents in a different way or different database. In particular, if we have a lot of documents, we might explore storing them in a data lake or a vector store.
+* The similarity measure 👉 How we measure similarity is of consequence, we might need to trade off performance and thoroughness (e.g., looking at every individual document).
+* The pre-processing of the documents & user input 👉 We might perform some extra preprocessing or augmentation of the user input before we pass it into the similarity measure. For instance, we might use an embedding to convert that input to a vector.
+* The similarity measure 👉 We can change the similarity measure to fetch better or more relevant documents.
+* The model 👉 We can change the final model that we use. We're using llama2 above, but we could just as easily use an Anthropic or Claude Model.
+* The prompt 👉 We could use a different prompt into the LLM/Model and tune it according to the output we want to get the output we want.
+* If you're worried about harmful or toxic output 👉 We could implement a "circuit breaker" of sorts that runs the user input to see if there's toxic, harmful, or dangerous discussions. For instance, in a healthcare context you could see if the information contained unsafe languages and respond accordingly - outside of the typical flow.
+
+
+#part 2
+## Running "test_3_SenTransformers.py" File
+to import sentence-transformers, run ```pip install sentence-transformers```
