@@ -30,12 +30,25 @@ full_response = []
 url = 'http://localhost:11434/api/generate'
 #The API endpoint where the bot will send a request. In this case, it’s a local server (localhost) running on port 11434.
 
+# the payload being sent to the API
 data = {
     "model": "llama2",
+    # Refers to the AI model being used.
+
     "prompt": prompt.format(user_input=user_input, relevant_document=corpus_of_documents)
+    # This is the actual prompt being sent to the model
 }
+
 headers = {'Content-Type': 'application/json'}
+# This specifies that the content type of the request being sent is JSON.
+
 response = requests.post(url, data=json.dumps(data), headers=headers, stream=True)
+"""requests.post: Sends a POST request to the given url.
+data=json.dumps(data): Converts the data dictionary to a JSON string.
+headers: The request includes the content-type header to let the server know it's receiving JSON data.
+stream=True: Tells the server to stream the response (i.e., receive the response bit by bit instead of all at once)."""
+
+# Processing the Response
 try:
   
     for line in response.iter_lines():
@@ -46,4 +59,11 @@ try:
             full_response.append(decoded_line['response'])
 finally:
     response.close()
+"""try...finally block: Ensures that the response is closed even if an error occurs.
+response.iter_lines(): Reads the streamed response line by line.
+line.decode('utf-8'): Converts each line from bytes to a UTF-8 string.
+json.loads(): Parses each line as JSON.
+decoded_line['response']: Extracts the response from the parsed JSON and appends it to the full_response list.
+response.close(): Closes the connection to the API."""
+
 print(''.join(full_response))
