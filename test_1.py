@@ -1,23 +1,23 @@
 # Define the corpus of documents
-# corpus_of_documents = [
-    
-#     "I like reading",
-#     "I enjoy swimming",
-#     "I enjoy hiking",
-# ]
-
 corpus_of_documents = [
-    "Take a leisurely walk in the park and enjoy the fresh air.",
-    "Visit a local museum and discover something new.",
-    "Attend a live music concert and feel the rhythm.",
-    "Go for a hike and admire the natural scenery.",
-    "Have a picnic with friends and share some laughs.",
-    "Explore a new cuisine by dining at an ethnic restaurant.",
-    "Take a yoga class and stretch your body and mind.",
-    "Join a local sports league and enjoy some friendly competition.",
-    "Attend a workshop or lecture on a topic you're interested in.",
-    "Visit an amusement park and ride the roller coasters."
+    
+    "I like reading", #2
+   "I enjoy swimming", #3
+    "I enjoy hiking", #1
 ]
+user_input = "I enjoy swimming" 
+# corpus_of_documents = [
+#     "Take a leisurely walk in the park and enjoy the fresh air.",
+#     "Visit a local museum and discover something new.",
+#     "Attend a live music concert and feel the rhythm.",
+#     "Go for a hike and admire the natural scenery.",
+#     "Have a picnic with friends and share some laughs.",
+#     "Explore a new cuisine by dining at an ethnic restaurant.",
+#     "Take a yoga class and stretch your body and mind.",
+#     "Join a local sports league and enjoy some friendly competition.",
+#     "Attend a workshop or lecture on a topic you're interested in.",
+#     "Visit an amusement park and ride the roller coasters."
+# ]
 
 def jaccard_similarity(query, document): # Jaccard similarity is a measure of how similar two sets (in this case, words in a query and a document) are based on the ratio of common words to the total unique words.
     
@@ -47,7 +47,7 @@ def return_response(query, corpus): # This function determines which document in
     return corpus[similarities.index(max(similarities))] #Finds the document in the corpus that has the highest similarity score and returns it as the response.
 
 user_prompt = "What is a leisure activity that you like?"
-user_input = "I like hiking"
+
 
 # Get the response
 response = return_response(user_input, corpus_of_documents) 
